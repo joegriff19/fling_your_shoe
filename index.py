@@ -107,14 +107,16 @@ def update_output(value):
     return (html.Br(),
             html.Div(f'You have selected {value}'),
             html.Br(),
-            html.Div("a 'shoe flinging power' button will appear on the next page"),
+            html.Div("A button will appear on the next page"),
             html.Br(),
-            html.Div("the more times you click the button, the farther you fling your shoe!"),
+            html.Div("The more times you click the button, the farther you fling your shoe"),
             html.Br(),
-            html.Div("when you are ready to play, click the 'ready to fling' button below!"),
+            html.Div("When you are ready to play, click the button below"),
             html.Br(),
-            dbc.Button(children='ready to fling', id='ready_button', href=dash.page_registry['pages.game']['path'])
-            # html.Button('ready to fling', id='ready_clicks', n_clicks=0, className="shoe_button"),
+            # dbc.Button(children='ready to fling', id='ready_button', href=dash.page_registry['pages.game']['path'])
+            dbc.Button(children='I am ready to fling!', id='ready_button', href='/game')
+
+    # html.Button('ready to fling', id='ready_clicks', n_clicks=0, className="shoe_button"),
             )
 
 
@@ -146,16 +148,16 @@ def show_flinging_power_button(ready_clicks):
 def render_page_content(pathname):
     if pathname == '/':
         return index_layout
-    elif pathname == '/index':
-        return index_layout
+    # elif pathname == '/index':
+    #     return index_layout
     elif pathname == '/game':
         return game.game_layout
 
-    # below pathname with /pages needed for render app
-    elif pathname == '/pages/index':
-        return index_layout
-    elif pathname == 'pages/game':
-        return game.game_layout
+    # # below pathname with /pages needed for render app
+    # elif pathname == '/pages/index':
+    #     return index_layout
+    # elif pathname == 'pages/game':
+    #     return game.game_layout
 
     # elif pathname == '/game-over':
     #     return game_over_layout

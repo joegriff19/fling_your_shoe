@@ -101,7 +101,9 @@ def end_game(n_intervals, n_clicks):
                          ),
                 html.Div(f"your shoe flew {final_score} feet!"),
                 dbc.Button(children='play again', id='home',
-                           href=dash.page_registry['index']['path']))
+                           # href=dash.page_registry['index']['path']))
+                           href='/'))
+
     # elif game_time == 2:
     #     return (html.Div("click the button below to see how far you flung your shoe"),
     #            dbc.Button(children='watch my shoe fling', id='fling_results',
