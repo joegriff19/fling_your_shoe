@@ -149,8 +149,15 @@ def render_page_content(pathname):
         return index_layout
     elif pathname == '/game':
         return game_layout
-    elif pathname == '/game-over':
-        return game_over_layout
+
+    # below pathname with /pages needed for render app
+    elif pathname == '/pages/index':
+        return index_layout
+    elif pathname == 'pages/game':
+        return game_layout
+
+    # elif pathname == '/game-over':
+    #     return game_over_layout
     # If the user tries to reach a different page, return a 404 message
     else:
         return dbc.Container(
