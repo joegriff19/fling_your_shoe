@@ -5,6 +5,7 @@ import dash
 from dash import dcc, html, clientside_callback, State, ctx
 import dash_bootstrap_components as dbc
 from dash.dependencies import Output, Input
+from pages import game
 # import time
 # import requests
 # from bs4 import BeautifulSoup
@@ -26,8 +27,8 @@ from dash.dependencies import Output, Input
 # from flask import send_from_directory
 # import dash_loading_spinners as dls
 
-from pages.game import game_layout
-from pages.game_over import game_over_layout
+# from pages.game import game_layout
+# from pages.game_over import game_over_layout
 
 dash.register_page(__name__)
 
@@ -145,16 +146,16 @@ def show_flinging_power_button(ready_clicks):
 def render_page_content(pathname):
     if pathname == '/':
         return index_layout
-    if pathname == '/index':
+    elif pathname == '/index':
         return index_layout
     elif pathname == '/game':
-        return game_layout
+        return game.game_layout
 
     # below pathname with /pages needed for render app
     elif pathname == '/pages/index':
         return index_layout
     elif pathname == 'pages/game':
-        return game_layout
+        return game.game_layout
 
     # elif pathname == '/game-over':
     #     return game_over_layout
