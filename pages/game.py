@@ -48,7 +48,7 @@ game_layout = html.Div(
                                     'background-color': '#2dbecd',
                                     'color': '#ffc832',
                                 }),
-                    # html.Button(' ', id='shoe_clicks', n_clicks=0, className="shoe_button"),
+                    # html.Button(id='shoe_clicks', n_clicks=0, className="shoe_button"),
                     html.Div(id='shoe_clicks_output', className="title"),
                     html.Div(id='time_up', className="title")
                 ],
@@ -66,27 +66,34 @@ game_layout = html.Div(
 )
 
 
-@app.callback(
-    Output('shoe_clicks_output', 'children'),
-    Input('shoe_clicks', 'n_clicks'),
-    prevent_initial_call=True
-)
-def display_click(btn):
-    global final_score
-    if "shoe_clicks" == ctx.triggered_id:
-        final_score = btn
-    # else:
-    #     final_score = 0
-    return " "
+# @app.callback(
+#     Output('shoe_clicks_output', 'children'),
+#     Input('shoe_clicks', 'n_clicks'),
+#     Input('game_time', 'n_intervals'),
+#     prevent_initial_call=True
+# )
+# def display_click(n_clicks):
+#     final_score = n_clicks
+#     # self.final_score = n_clicks
+#     return final_score
 
 
 @app.callback(
     Output('time_up', 'children'),
     Input('game_time', 'n_intervals'),
+    Input('shoe_clicks', 'n_clicks'),
     prevent_initial_call=True
 )
-def end_game(game_time):
-    if game_time == 1:
+def end_game(n_intervals, n_clicks):
+    global final_score
+    if n_intervals == 0:
+        final_score = n_clicks
+        return final_score
+
+    if n_intervals == 1:
+        # final_score = n_clicks
+        # final_score_print = final_score
+        # final_score = 0
         return (html.Div("time is up!"),
                 html.Div(de.Lottie(options=options, width="10vh", height="10vh", url="/loader", speed=1,
                                    isClickToPauseDisabled=True),
@@ -94,7 +101,7 @@ def end_game(game_time):
                          ),
                 html.Div(f"your shoe flew {final_score} feet!"),
                 dbc.Button(children='play again', id='home',
-                           href=dash.page_registry['pages.index']['path']))
+                           href=dash.page_registry['index']['path']))
     # elif game_time == 2:
     #     return (html.Div("click the button below to see how far you flung your shoe"),
     #            dbc.Button(children='watch my shoe fling', id='fling_results',

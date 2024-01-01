@@ -113,7 +113,7 @@ def update_output(value):
             html.Br(),
             html.Div("when you are ready to play, click the 'ready to fling' button below!"),
             html.Br(),
-            dbc.Button(children='ready to fling', id='ready_button', href=dash.page_registry['game']['path'])
+            dbc.Button(children='ready to fling', id='ready_button', href=dash.page_registry['pages.game']['path'])
             # html.Button('ready to fling', id='ready_clicks', n_clicks=0, className="shoe_button"),
             )
 
