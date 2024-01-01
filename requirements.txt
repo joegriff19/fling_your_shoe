@@ -4,3 +4,4 @@ gunicorn
 dash-bootstrap-components
 dash_extensions
 lxml
+Werkzeug==2.2.2
