@@ -113,10 +113,7 @@ def update_output(value):
             html.Br(),
             html.Div("When you are ready to play, click the button below"),
             html.Br(),
-            # dbc.Button(children='ready to fling', id='ready_button', href=dash.page_registry['pages.game']['path'])
-            dbc.Button(children='I am ready to fling!', id='ready_button', href='/game')
-
-    # html.Button('ready to fling', id='ready_clicks', n_clicks=0, className="shoe_button"),
+            dbc.Button(children='I am ready to fling my shoe!', id='ready_button', href='/game')
             )
 
 
@@ -153,23 +150,21 @@ def render_page_content(pathname):
     elif pathname == '/game':
         return game.game_layout
 
-    # # below pathname with /pages needed for render app
-    # elif pathname == '/pages/index':
-    #     return index_layout
-    # elif pathname == 'pages/game':
-    #     return game.game_layout
-
-    # elif pathname == '/game-over':
-    #     return game_over_layout
     # If the user tries to reach a different page, return a 404 message
     else:
         return dbc.Container(
             [
                 html.H1("404: Page not found", className="text-danger"),
-                html.P(
-                    "Please return to the home page",
-                    className="lead",
-                )])
+                html.P("Please return to the home page", className="lead"),
+                dbc.Button(children='Fling Your Shoe Home Page', id='home', href='/')
+            ],
+            style={
+                'textAlign': 'center',
+                'justify': 'center',
+                "padding": "0px",
+                "margin": "0px"
+            }
+        )
 
 # def show_game():
 #     pass
